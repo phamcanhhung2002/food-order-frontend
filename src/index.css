@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.overide_input .ant-input-group-addon {
+    background-color: #195A00;
+    color: white;
+}
+
+.overide_input .ant-input {
+    color: #828282
+}
+
+.overide_input .ant-input:focus {
+    color: black !important;
+}
+.overide-shop-search .ant-input{
+    border-radius: 0 !important;
+    background-color: rgba(168,188,161,.3) !important;
+}
+.overide-shop-search .ant-btn  {
+    border-radius: 0 !important;
+    background-color: #195A00 !important;
+    color: white !important;
+}
+
+/* Overide checkbox AntD  */
+.overide-shop-checkbox .ant-checkbox-inner {
+    border-radius: 0 !important;
+}
+
+.overide-shop-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #195A00 !important;
+    border-color: #195A00 !important;
+}
+
+/* Overide slider AntD */
+.overide-shop-slider .ant-slider-track {
+    background-color: #195A00   !important;
+}
+
+.overide-shop-slider .ant-slider-handle::after {
+    box-shadow: 0 0 0 2px white !important;
+    background-color: #195A00 !important;
+}
+
+
+/* Input - [Product Detail] */
+.overide-input--qty-detail .ant-input-number-group-addon {
+    border-radius: 0;
+    cursor: pointer;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 0;
+}
+
+
+.overide-input--qty-detail .ant-input-number-group-addon:hover {
+    background-color: rgba(168,188,161,.3) !important;
+    border: 1px solid #195A00;
+    transition-delay: 75ms;
+}
+
+.overide-input--qty-detail .ant-input-number:hover {
+    border: 1px solid #195A00;
+}
+.overide-input--qty-detail .ant-input-number-focused {
+    border: 1px solid #195A00;
+}
+
+.overide-input--qty-detail .ant-input-number-input-wrap {
+    width: 100px;
+    margin-top: auto;
+    padding: 10px;
+    margin-bottom: auto;
+} 
+
+.overide-input--qty-detail .ant-input-number-input {
+    text-align: center;
+    line-height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16px;
+} 
+
+/* Segmented - [Product Detail] */
+.overide-segmented--detail .ant-segmented-item-selected {
+    background-color: #195A00;
+    color: white;
+    border-radius: 0;
+}
+
+.overide-segmented--detail .ant-segmented-thumb {
+    background-color: #195A00;
+    border-radius: 0;
+}
+
+.overide-segmented--detail .ant-segmented-item {
+    border-radius: 0;
+    width: 120px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Overide Blog Search */
+.overide-blog-search .ant-input{
+    border-radius: 0 !important;
+    min-height: 70px !important;
+    border: 1px solid #E0E0E0 !important;
+} 
+.overide-blog-search .ant-btn  {
+    border-radius: 0 !important;
+    background-color: #195A00 !important;
+    color: white !important;
+    min-height: 70px !important;
+    min-width: 70px !important;
+
+}
+
+/* Select - [Checkout] */
+.overide-select--checkout .ant-select-selector {
+    width: 100%;
+    height: 56px !important;
+    border-radius: 0px;
+}
+.overide-select--checkout .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* Input Number [Cart] */
+.overide-input--qty-cart .ant-input-number-group-addon {
+    border-radius: 100px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+/* .overide-input--qty-cart .ant-input-number-group-addon:hover {
+    background-color: rgba(168,188,161,.3) !important;
+    border: 1px solid #195A00;
+    transition-delay: 75ms;
+} */
+
+.overide-input--qty-cart .ant-input-number:hover {
+    border: 1px solid #195A00;
+}
+.overide-input--qty-cart .ant-input-number-focused {
+    border: 1px solid #195A00;
+}
+
+.overide-input--qty-cart .ant-input-number-input-wrap {
+    min-width: 60px;
+    margin-top: auto;
+    padding: 0 10px 0 10px;
+    margin-bottom: auto;
+} 
+
+.overide-input--qty-detail .ant-input-number-input {
+    width: 100%;
+    text-align: center;
+    line-height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16px;
+} 
+
+/* Input_Apply [Cart] */
+
+.overide-input--cart .ant-input {
+    height: 56px;
+}
+
+.overide-input--cart .ant-input-group-addon {
+    background-color: #195A00;
+    color:white;
+    cursor: pointer;
+}
+.overide-input--cart .ant-input-group-addon:hover {
+    background-color: #248001;
+}
+
+
+/* ////////////////////////////////// */
+img {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ////////////////////////////////// */
+
+
+.animate-fadeout {
+    animation: fadeOut 500ms ease-in-out;
+}
+
+.animate-fadeout-bt {
+    animation: fadeOutBT 500ms ease-in-out;
+}
+
+@keyframes fadeOut {
+    from {
+        right: 100px;
+        opacity: 0.2
+    }
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutBT {
+    from {
+        top: 50px;
+        opacity: 0.2
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* .............. */
+
+.slick-arrow.slick-next, .slick-arrow.slick-prev {
+    background-color: #195A00 !important;
+    display: block !important;
+    width: 50px !important;
+    height: 50px !important;
+    color: red !important;
+}
+
+.slick-arrow.slick-next {
+    right: -80px !important;
+}.slick-arrow.slick-prev {
+    left: -80px !important;
+}
+.slick-arrow.slick-next:hover, .slick-arrow.slick-prev:hover {
+    display: block !important;
+    background-color: #248001 !important;
+}
+
+
+/* ...................... */
+
+.animate-spin-leaf {
+    animation: spinLeaf 8s linear infinite;
+}
+
+@keyframes spinLeaf {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ant-breadcrumb ol{
+    justify-content: center;
+    margin-top: -6px;
+
+}
