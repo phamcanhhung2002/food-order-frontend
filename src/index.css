@@ -37,6 +37,14 @@
     border-color: #195A00 !important;
 }
 
+.overide-shop-checkbox .ant-radio-inner {
+}
+
+.overide-shop-checkbox .ant-radio-checked .ant-radio-inner {
+    background-color: #195A00 !important;
+    border-color: #195A00 !important;
+}
+
 /* Overide slider AntD */
 .overide-shop-slider .ant-slider-track {
     background-color: #195A00   !important;

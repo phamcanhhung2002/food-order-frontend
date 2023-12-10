@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import cartReducer from './cart/cartSlice'
+import userReducer from './user/userSlice'
 import { persistReducer, persistStore } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/lib/storage";
@@ -11,10 +12,11 @@ const persistConfig = {
 };
 
 const rootReducers = combineReducers({
-  cart: cartReducer
+  cart: cartReducer,
+  userInfo: userReducer
 })
 
-const pReducer : any= persistReducer<RootState>(persistConfig, rootReducers);
+const pReducer: any = persistReducer<RootState>(persistConfig, rootReducers);
 
 
 export const store = configureStore({

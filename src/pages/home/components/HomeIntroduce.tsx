@@ -82,8 +82,7 @@ const HomeIntroduce = () => {
               Enjoy Healthy Life & Testy Food.
             </p>
             
-            <p className="text-base text-content mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
-            Varius sed pharetra dictum neque massa congue </p>
+            <p className="text-base text-content mb-8"> With a diverse menu featuring wholesome and nutritious options, we promise satisfaction for every palate. Enjoyment isn't just about savoring great flavors; it's also about caring for your health through balanced, nourishing choices.  </p>
             
             <Button type="primary" onClick={() => navigate('/menu')}className="bg-primary font-bold mr-4 h-14 w-52 text-lg max-xl:w-32">Show more</Button>
             <Button type="default" onClick={() => navigate('/shop')}className="border-primary  text-primary font-bold h-14 w-56 text-lg max-lg:w-36">Place an order</Button>

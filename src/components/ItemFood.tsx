@@ -10,7 +10,6 @@ import { addProduct } from "../state/cart/cartSlice";
 import { toast } from "react-toastify";
 import { Food } from "../types/listType";
 
-const CLOUD_NAME = "dtkyjtgbg";
 
 const ItemFood = ({ food }: { food: Food }) => {
   const navigate = useNavigate();
@@ -22,14 +21,12 @@ const ItemFood = ({ food }: { food: Food }) => {
     dispatch(addProduct({ id: food.id, qty: 1, price: food.currentPrice }));
   };
 
-  const imageUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/dishes/${food.featuredImageId}.jpg`;
-
   return (
     <div className="group w-full">
       <div
-        className={`relative w-full h-[267px] bg-[url('${imageUrl}')] bg-cover`}
+        className={`relative w-full h-[267px]  bg-cover`}
         style={{
-          backgroundImage: "url(" + imageUrl + ")",
+          backgroundImage: "url(" + food.featuredImageId + ")",
         }}
       >
         <div className="w-full h-full absolute bg-[rgba(0,0,0,0.6)] hidden group-hover:block" />
