@@ -27,11 +27,9 @@ const ItemFood = ({ food }: { food: Food }) => {
   return (
     <div className="group w-full">
       <div
-        className={`relative w-full h-[267px] bg-[url('${imageUrl}')] bg-cover`}
-        style={{
-          backgroundImage: "url(" + imageUrl + ")",
-        }}
+        className={`relative w-full h-[267px] bg-cover`}
       >
+        <img src={food.featuredImageId.includes('https://') ? food.featuredImageId : imageUrl} className="w-full h-[267px] object-cover absolute"/>
         <div className="w-full h-full absolute bg-[rgba(0,0,0,0.6)] hidden group-hover:block" />
         <div
           className="w-full h-full  items-center justify-center gap-x-6 hidden group-hover:flex group-hover:brightness-150 z-10 cursor-pointer"
