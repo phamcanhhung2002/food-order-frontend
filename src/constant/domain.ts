@@ -1,1 +1,1 @@
-export const serverSubUrl = "http://localhost:3000/api/v1";
+export const serverSubUrl = "https://foodtuck.onrender.com/api/v1";
