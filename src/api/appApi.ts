@@ -19,6 +19,11 @@ class appAPI {
         const url = "/auth/sign-in";
         return axiosClient.post(url, data);
     };
+
+    allMenus = () => {
+        const url = '/menus';
+        return axiosClient.get(url)
+    }
 }
 
 export const appApi = new appAPI();
