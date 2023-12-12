@@ -1,4 +1,4 @@
-import { Select } from "antd";
+import { Select, Spin } from "antd";
 import ShopSideBar from "./components/ShopSideBar";
 import ShopPagination from "./components/ShopPagination";
 import CoverPage from "../../components/CoverPage";
@@ -21,8 +21,10 @@ const Shop = () => {
   const [error, setError] = useState(false);
 
   const [foods, setFoods] = useState<Array<Food>>([]);
+  const [loading, setLoading] = useState(false);
 
   const getFoods = async (currentPage: number = 1) => {
+    setLoading(true);
     try {
       const { cat } = filters;
 
@@ -43,6 +45,8 @@ const Shop = () => {
       setFoods(data);
       setNumPages(numPages);
       setCurrentPage(currentPage);
+      setLoading(false);
+
       if (error) setError(false);
     } catch (err) {
       setError(true);
@@ -50,6 +54,7 @@ const Shop = () => {
   };
 
   useEffect(() => {
+    setFoods([])
     getFoods();
   }, [filters]);
 
@@ -65,11 +70,7 @@ const Shop = () => {
   };
   return (
     <article>
-      <CoverPage
-        title="Shop"
-        currentPage="Shop"
-        listPath={[{ title: "Home", path: "/" }]}
-      />
+      <CoverPage title="Shop" currentPage="Shop" listPath={[{ title: "Home", path: "/" }]} />
 
       <section className="flex gap-x-8 items-center pt-10 mb-6 max-lg:flex-col max-lg:items-start max-lg:gap-y-3 max-lg:pt-0">
         <div className="flex items-center gap-x-2">
@@ -103,18 +104,12 @@ const Shop = () => {
 
       <section className="flex gap-x-10">
         <div className="basis-9/12 flex flex-col items-center max-lg:basis-full max-lg:w-full ">
+          {<div className="flex justify-center absolute w-full h-full">{loading && <Spin size="large" />}</div>}
+
           <div className="grid sm:grid-cols-1 lg:grid-cols-2  2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 gap-10 w-full max-lg:gap-0 max-lg:gap-y-6">
-            {error
-              ? "Something went wrong"
-              : foods.map((food, index) => (
-                  <ItemFood key={index} food={food} />
-                ))}
+            {error ? "Something went wrong" : foods.map((food, index) => <ItemFood key={index} food={food} />)}
           </div>
-          <ShopPagination
-            qtyPage={numPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          <ShopPagination qtyPage={numPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
 
         <div className="basis-3/12 bg-65 max-lg:hidden">
