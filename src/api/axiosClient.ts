@@ -1,8 +1,7 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import queryString from "query-string";
 import { toast } from "react-toastify";
 import { HOST_API } from "../constant/host";
-import { store } from "../state/store";
 
 const axiosClient = axios.create({
   baseURL: HOST_API,
@@ -17,29 +16,15 @@ const axiosClient = axios.create({
       });
     },
   },
-});
-
-axiosClient.interceptors.request.use(async (config) => {
-  let token = store.getState()?.userInfo?.token;
-
-  if (token) {
-    config.headers.set("Authorization", `Bearer ${token}`);
-  }
-  config.timeout = 15000;
-  return config;
+  withCredentials: true,
 });
 
 axiosClient.interceptors.response.use(
-  (response) => {
-    if (response && response.data) {
-      return response;
-    }
-    return response;
-  },
-  (error: AxiosError) => {
-    toast.error(error.message);
+  (response) => response,
+  (error) => {
+    const data = error?.response?.data;
+    if (data) toast.error(data.message);
     throw error;
-  },
+  }
 );
 export default axiosClient;
-

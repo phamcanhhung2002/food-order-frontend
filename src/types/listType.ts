@@ -1,5 +1,5 @@
 export interface Food {
-  id: string;
+  id: number;
   name: string;
   featuredImageId: string;
   currentPrice: number;
