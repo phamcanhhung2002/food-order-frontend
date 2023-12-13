@@ -4,32 +4,49 @@ import {
   ShoppingOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../state/cart/cartSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Food } from "../types/listType";
-
-const CLOUD_NAME = "dtkyjtgbg";
+import { appApi } from "../api/appApi";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../state/store";
+import { logOut, setNumOfFoodsInOrder } from "../state/user/userSlide";
+import { AxiosError } from "axios";
 
 const ItemFood = ({ food }: { food: Food }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
-
-  const handleAddToCart = (e: any) => {
+  const handleAddToCart = async (e: any) => {
     e.stopPropagation();
-    toast.success(`Add 01 ${food.name} to cart successfully`);
-    dispatch(addProduct({ id: food.id, qty: 1, price: food.currentPrice }));
-  };
 
-  const imageUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/dishes/${food.featuredImageId}.jpg`;
+    try {
+      const { data } = await appApi.addFoodToOrder(user.id, food.id);
+      const newNumOfFoodsInOrder = data.order.total;
+      if (newNumOfFoodsInOrder !== user.numOfFoodsInOrder) {
+        dispatch(setNumOfFoodsInOrder(newNumOfFoodsInOrder));
+      }
+      toast.success(`Add 01 ${food.name} to cart successfully!`);
+    } catch (err) {
+      if (err instanceof AxiosError && err?.response?.status === 401) {
+        navigate("/login", {
+          state: { from: location.pathname },
+          replace: true,
+        });
+      } else {
+        dispatch(logOut());
+      }
+    }
+  };
 
   return (
     <div className="group w-full">
-      <div
-        className={`relative w-full h-[267px] bg-cover`}
-      >
-        <img src={food.featuredImageId.includes('https://') ? food.featuredImageId : imageUrl} className="w-full h-[267px] object-cover absolute"/>
+      <div className={`relative w-full h-[267px] bg-cover`}>
+        <img
+          src={food.featuredImageId}
+          className="w-full h-[267px] object-cover absolute"
+        />
         <div className="w-full h-full absolute bg-[rgba(0,0,0,0.6)] hidden group-hover:block" />
         <div
           className="w-full h-full  items-center justify-center gap-x-6 hidden group-hover:flex group-hover:brightness-150 z-10 cursor-pointer"

@@ -4,11 +4,9 @@ import ShopPagination from "./components/ShopPagination";
 import CoverPage from "../../components/CoverPage";
 import ItemFood from "../../components/ItemFood";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Food } from "../../types/listType";
 import { FilterType } from "../../types/filterType";
-import { ReturnFoodType } from "../../types/returnFoodType";
-import { serverSubUrl } from "../../constant/domain";
+import { appApi } from "../../api/appApi";
 
 const size = 9;
 
@@ -28,14 +26,12 @@ const Shop = () => {
     try {
       const { cat } = filters;
 
-      const res = await axios.get<ReturnFoodType>(`${serverSubUrl}/foods`, {
-        params: {
-          page: currentPage,
-          size,
-          ...filters,
-          cat: cat ? cat.join(",") : undefined,
-          sort,
-        },
+      const res = await appApi.filterFoods({
+        page: currentPage,
+        size,
+        ...filters,
+        cat: cat ? cat.join(",") : undefined,
+        sort,
       });
 
       const { data, metaData } = res.data;

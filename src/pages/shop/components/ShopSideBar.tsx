@@ -92,8 +92,9 @@ const ShopSideBar = ({
           }}
         >
           <div className="flex flex-col gap-y-4">
-            {categories.map((item) => (
+            {categories.map((item, index) => (
               <Checkbox
+                key={index}
                 value={item.id}
                 className="overide-shop-checkbox !font-sans text-[#333] text-lg"
               >
