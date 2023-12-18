@@ -10,10 +10,17 @@ const HomeMenu = () => {
   const [dataMenu, setDataMenu] = useState<any[]>([]);
   useEffect(() => {
     const fetchMenus = async () => {
-      const { data } = await appApi.allMenus();
-      setDataMenu(data);
+      try {
+        const { data } = await appApi.allMenus();
+        setDataMenu(data);
+        console.log(data)
+        
+      } catch (error) {
+        console.log(error)
+      }
     };
     fetchMenus();
+
   }, []);
 
   return (
@@ -43,11 +50,11 @@ const HomeMenu = () => {
         ))}
       </div>
       <div className="flex justify-between flex-wrap w-full pt-14 mb-14">
-        {dataMenu[activeTypeMenu].foods.map((food: any, index: number) => (
+        {/* {dataMenu[activeTypeMenu].foods.map((food: any, index: number) => (
           <div className="basis-[calc(50%-20px)] max-lg:basis-full">
             <ItemMenu title={food.name} energy={food.energy} price={food.currentPrice} description={food.introduction} image=""/>
           </div>
-        ))}
+        ))} */}
 
         {/* <div className='basis-[calc(50%-20px)] max-lg:basis-full'>
           <ItemMenu />
