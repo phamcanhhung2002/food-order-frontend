@@ -33,9 +33,9 @@ const SignUp = () => {
   return (
     <div className="min-h-screen">
       <CoverPage
-        title="Login Page"
-        currentPage="Login"
-        listPath={[{ title: "Login", path: "/" }]}
+        title="Signup Page"
+        currentPage="Signup"
+        listPath={[{ title: "Signup", path: "/" }]}
       />
       <section className="flex items-center justify-center w-full ">
         <div className="lg:w-4/12 w-full shadow-[0_10px_40px_rgba(25,_90,_0,_0.3)] p-8 flex flex-col">
