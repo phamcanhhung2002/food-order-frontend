@@ -1,3 +1,4 @@
+import { IShippingAddress } from "../types/cartType";
 import axiosClient from "./axiosClient";
 import axiosPrivate from "./axiosPrivate";
 
@@ -73,6 +74,11 @@ class appAPI {
     return axiosPrivate.patch(url, {
       quantity,
     });
+  };
+
+  checkout = (userId: number, shippingAddress: IShippingAddress) => {
+    const url = `customers/${userId}/order/checkout`;
+    return axiosPrivate.patch(url, shippingAddress);
   };
 }
 
