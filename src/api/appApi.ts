@@ -6,6 +6,11 @@ class appAPI {
     const url = "/foods";
     return axiosClient.get(url);
   };
+
+  detailFood = (id: number) => {
+    const url = `/foods/${id}`
+    return axiosClient.get(url);
+  }
   filterFoods = (query: {
     name?: string;
     page?: number;

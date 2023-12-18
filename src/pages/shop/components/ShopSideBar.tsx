@@ -78,6 +78,7 @@ const ShopSideBar = ({
         className="overide-shop-search"
       />
 
+
       <div>
         <p className="font-bold text-[#333] text-xl my-6">Category</p>
         <Checkbox.Group
@@ -105,22 +106,6 @@ const ShopSideBar = ({
         </Checkbox.Group>
       </div>
 
-      <div className="relative mt-6">
-        <img
-          src="./images/shop/ads_perfect-taste.png"
-          alt="Ads"
-          className="w-full"
-        />
-        <div className="absolute top-0 text-white py-7 px-6 h-full">
-          <p className="font-bold mb-1">Perfect Taste</p>
-          <p className="font-bold text-xl mb-3">Classic Restaurant</p>
-          <p className="font-bold text-primary">45.00$</p>
-          <p className="mt-auto flex items-center gap-x-2 bottom-10 absolute">
-            Shop now <RightCircleOutlined />
-          </p>
-        </div>
-      </div>
-
       <div>
         <p className="font-bold text-[#333] text-xl my-6">Filter By Price</p>
         <Slider
@@ -140,6 +125,25 @@ const ShopSideBar = ({
         </p>
       </div>
 
+
+
+      <div className="relative mt-6">
+        <img
+          src="./images/shop/ads_perfect-taste.png"
+          alt="Ads"
+          className="w-full"
+        />
+        <div className="absolute top-0 text-white py-7 px-6 h-full">
+          <p className="font-bold mb-1">Perfect Taste</p>
+          <p className="font-bold text-xl mb-3">Classic Restaurant</p>
+          <p className="font-bold text-primary">45.00$</p>
+          <p className="mt-auto flex items-center gap-x-2 bottom-10 absolute">
+            Shop now <RightCircleOutlined />
+          </p>
+        </div>
+      </div>
+
+     
       <div>
         <p className="font-bold text-[#333] text-xl my-6">Lastest Products</p>
         <div className="flex flex-col gap-4">

@@ -116,12 +116,11 @@ const GeneralRoutes: Array<IRoutesProps> = [
     ),
     title: "FAQ",
   },
-
-  // {
-  //   path: "/detail-product/:id",
-  //   element: <Suspense> {<DetailProduct />}</Suspense>,
-  //   title: "Detail Product",
-  // },
+  {
+    path: "/detail-product/:id",
+    element: <Suspense> {<DetailProduct />}</Suspense>,
+    title: "Detail Product",
+  },
   {
     path: "blog/:id",
     element: (
