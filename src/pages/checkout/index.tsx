@@ -113,12 +113,12 @@ const Checkout = () => {
                           style={{ width: 120 }}
                           onChange={() => {}}
                           options={[
-                            { value: "Vietnam", label: "Vietnam" },
-                            { value: "Laos", label: "Laos" },
-                            { value: "Campuchia", label: "Campuchia" },
+                            { value: "Guangdong", label: "Guangdong" },
+                            { value: "Jiangsu", label: "Jiangsu" },
+                            { value: "Shandong", label: "Shandong" },
                             {
-                              value: "China",
-                              label: "China",
+                              value: "Zhejiang",
+                              label: "Zhejiang",
                             },
                           ]}
                           className="overide-select--checkout !w-full rounded-none"
