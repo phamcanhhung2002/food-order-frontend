@@ -6,6 +6,7 @@ import ItemLastestProduct from "../../../components/shop/ItemLastestProduct";
 import { FilterType } from "../../../types/filterType";
 import { Category } from "../../../types/listType";
 import { appApi } from "../../../api/appApi";
+import { useNavigate } from "react-router-dom";
 
 const listProductTags: Array<string> = [
   "Services",
@@ -31,6 +32,8 @@ const ShopSideBar = ({
     "Pizza",
   ]);
 
+  const [bestSellers, setBestSellers] = useState([])
+  const navigate = useNavigate()
   const handleClickTag = (item: string) => {
     if (productTags.includes(item)) {
       setProductTags(
@@ -49,6 +52,8 @@ const ShopSideBar = ({
           const res = await appApi.allCategories();
           const { categories } = res.data;
           setCategories(categories);
+          const {data} = await appApi.bestSeller(4)
+          setBestSellers(data.data)
         } catch (err) {
           setError(true);
         }
@@ -140,32 +145,17 @@ const ShopSideBar = ({
       </div>
 
       <div>
-        <p className="font-bold text-[#333] text-xl my-6">Lastest Products</p>
+        <p className="font-bold text-[#333] text-xl my-6">Best Sellers</p>
         <div className="flex flex-col gap-4">
-          <ItemLastestProduct
-            image="./images/shop/lastest_product.png"
-            name="Pizza"
-            point={3}
-            price={35}
-          />
-          <ItemLastestProduct
-            image="./images/shop/lastest_product.png"
-            name="Pizza"
-            point={3}
-            price={35}
-          />
-          <ItemLastestProduct
-            image="./images/shop/lastest_product.png"
-            name="Pizza"
-            point={3}
-            price={35}
-          />
-          <ItemLastestProduct
-            image="./images/shop/lastest_product.png"
-            name="Pizza"
-            point={3}
-            price={35}
-          />
+          {
+            bestSellers.map((item: any) => <ItemLastestProduct 
+              image={item.featuredImageId}
+              name = {item.name}
+              point = {item.rating}
+              price = {item.currentPrice}
+              onClick={() => navigate(`/detail-product/${item.id}`)}
+            />)
+          }
         </div>
       </div>
 

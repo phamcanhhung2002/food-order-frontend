@@ -7,7 +7,10 @@ class appAPI {
     const url = "/foods";
     return axiosClient.get(url);
   };
-
+  bestSeller = (num: number) => {
+    const url = `/foods/best-seller${num ? '?num=' + num : ''}`
+    return axiosClient.get(url);
+  }
   detailFood = (id: number) => {
     const url = `/foods/${id}`;
     return axiosClient.get(url);
