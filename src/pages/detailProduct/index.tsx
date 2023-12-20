@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Divider, InputNumber, Rate, Segmented } from "antd";
+import {  Divider, InputNumber, Rate, Segmented } from "antd";
 import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
   FacebookFilled,
-  HeartOutlined,
   InstagramFilled,
-  InteractionOutlined,
-  ShoppingCartOutlined,
   TwitterOutlined,
   YoutubeFilled,
 } from "@ant-design/icons";
 import { valueType } from "antd/es/statistic/utils";
-import ItemFood from "../../components/ItemFood";
 import CoverPage from "../../components/CoverPage";
 import { appApi } from "../../api/appApi";
 
@@ -26,7 +20,7 @@ const DetailProduct = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const {data} = await appApi.detailFood(id || '')
+      const {data} = await appApi.detailFood(id ? Number(id) : 1)
       setProduct(data)
     }
     fetchData()
