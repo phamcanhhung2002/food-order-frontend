@@ -4,9 +4,8 @@ import { Checkbox, Input } from "antd";
 import { Slider } from "antd";
 import ItemLastestProduct from "../../../components/shop/ItemLastestProduct";
 import { FilterType } from "../../../types/filterType";
-import axios from "axios";
-import { serverSubUrl } from "../../../constant/domain";
 import { Category } from "../../../types/listType";
+import { appApi } from "../../../api/appApi";
 
 const listProductTags: Array<string> = [
   "Services",
@@ -47,7 +46,7 @@ const ShopSideBar = ({
     try {
       const getCategories = async () => {
         try {
-          const res = await axios.get(`${serverSubUrl}/categories`);
+          const res = await appApi.allCategories();
           const { categories } = res.data;
           setCategories(categories);
         } catch (err) {
@@ -77,7 +76,6 @@ const ShopSideBar = ({
         size="large"
         className="overide-shop-search"
       />
-
 
       <div>
         <p className="font-bold text-[#333] text-xl my-6">Category</p>
@@ -125,8 +123,6 @@ const ShopSideBar = ({
         </p>
       </div>
 
-
-
       <div className="relative mt-6">
         <img
           src="./images/shop/ads_perfect-taste.png"
@@ -143,7 +139,6 @@ const ShopSideBar = ({
         </div>
       </div>
 
-     
       <div>
         <p className="font-bold text-[#333] text-xl my-6">Lastest Products</p>
         <div className="flex flex-col gap-4">
