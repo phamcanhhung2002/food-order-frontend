@@ -19,7 +19,6 @@ const ShoppingCart = () => {
     const getCart = async () => {
       try {
         const { data } = await appApi.getCart(user.id);
-
         setCart(data.order);
       } catch (err) {
         dispatch(logOut());
@@ -28,7 +27,8 @@ const ShoppingCart = () => {
 
     getCart();
   }, []);
-
+  const [value, setValue] = useState<string>('');
+  const [discount, setDiscount] = useState<string>('');
   return (
     <div>
       <CoverPage
@@ -50,11 +50,16 @@ const ShoppingCart = () => {
                 </p>
                 <Input
                   addonAfter={
-                    <p className="h-14 flex items-center justify-center w-[90px] text-lg">
+                    <p onClick = { async () => {
+							const discount_resp = await appApi.discount(user.id, cart.id, value);
+							setDiscount(discount_resp?.data?.metadata?.checkout_order?.totalDiscount);
+						}
+					} className="h-14 flex items-center justify-center w-[90px] text-lg">
                       Apply
                     </p>
                   }
                   placeholder="Enter Code Here"
+				  onChange={(e) => {setValue(e.target.value)}}
                   className="overide-input--cart w-full rounded-none h-14"
                 />
               </div>
@@ -69,6 +74,10 @@ const ShoppingCart = () => {
                 <p className="flex justify-between text-[#4F4F4F] text-lg">
                   Shipping Charge <span>$0.00</span>
                 </p>
+                <p className="flex justify-between text-[#4F4F4F] text-lg">
+                  Discount <span>{discount}</span>
+                </p>
+
                 <Divider />
                 <p className="flex justify-between font-bold text-xl text-[#333]">
                   Total Amount <span>${cart.subTotal}</span>
