@@ -6,6 +6,7 @@ import ItemLastestProduct from "../../../components/shop/ItemLastestProduct";
 import { FilterType } from "../../../types/filterType";
 import { Category } from "../../../types/listType";
 import { appApi } from "../../../api/appApi";
+import { useNavigate } from "react-router-dom";
 
 const listProductTags: Array<string> = [
   "Services",
@@ -32,7 +33,7 @@ const ShopSideBar = ({
   ]);
 
   const [bestSellers, setBestSellers] = useState([])
-
+  const navigate = useNavigate()
   const handleClickTag = (item: string) => {
     if (productTags.includes(item)) {
       setProductTags(
@@ -52,8 +53,7 @@ const ShopSideBar = ({
           const { categories } = res.data;
           setCategories(categories);
           const {data} = await appApi.bestSeller(4)
-          setBestSellers(data)
-
+          setBestSellers(data.data)
         } catch (err) {
           setError(true);
         }
@@ -153,6 +153,7 @@ const ShopSideBar = ({
               name = {item.name}
               point = {item.rating}
               price = {item.currentPrice}
+              onClick={() => navigate(`/detail-product/${item.id}`)}
             />)
           }
         </div>

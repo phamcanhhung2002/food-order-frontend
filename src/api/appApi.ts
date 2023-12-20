@@ -8,7 +8,7 @@ class appAPI {
     return axiosClient.get(url);
   };
   bestSeller = (num: number) => {
-    const url = `/foods/best-seller${num ? 'num=' + num : ''}`
+    const url = `/foods/best-seller${num ? '?num=' + num : ''}`
     return axiosClient.get(url);
   }
   detailFood = (id: number) => {
