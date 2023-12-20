@@ -8,6 +8,7 @@ import { Badge, Divider, Drawer, Popover } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import { logOut } from "../../state/user/userSlide";
+import { appApi } from "../../api/appApi";
 
 const Header = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -19,7 +20,8 @@ const Header = () => {
   const [headerSticked, setHeaderSticked] = React.useState(false);
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await appApi.logOut();
     dispatch(logOut());
     navigate("/login", { replace: true });
   };

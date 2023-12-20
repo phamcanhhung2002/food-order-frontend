@@ -9,9 +9,9 @@ class appAPI {
   };
 
   detailFood = (id: number) => {
-    const url = `/foods/${id}`
+    const url = `/foods/${id}`;
     return axiosClient.get(url);
-  }
+  };
   filterFoods = (query: {
     name?: string;
     page?: number;
@@ -47,9 +47,7 @@ class appAPI {
   getRefreshToken = () => {
     const url = "/refresh/customers";
 
-    return axiosClient.get(url, {
-      withCredentials: true,
-    });
+    return axiosClient.get(url);
   };
 
   getCart = (userId: number) => {
@@ -79,6 +77,11 @@ class appAPI {
   checkout = (userId: number, shippingAddress: IShippingAddress) => {
     const url = `customers/${userId}/order/checkout`;
     return axiosPrivate.patch(url, shippingAddress);
+  };
+
+  logOut = () => {
+    const url = `logout/customers`;
+    return axiosClient.get(url);
   };
 }
 
