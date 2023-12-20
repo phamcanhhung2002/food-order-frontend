@@ -79,6 +79,12 @@ class appAPI {
     return axiosPrivate.patch(url, shippingAddress);
   };
 
+  discount = (userId: number, orderId: number, code: string) => {
+    const url = `discount/getdiscountamount`;
+    return axiosPrivate.post(url, {customerId: userId, orderId, discountCodeId: code});
+  };
+
+
   logOut = () => {
     const url = `logout/customers`;
     return axiosClient.get(url);

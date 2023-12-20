@@ -24,7 +24,6 @@ const SignUp = () => {
     e.preventDefault();
     const { data } = await appApi.signUp(account);
     const message = data.message as string;
-    console.log(data);
     toast.success(message);
 
     navigate("/login");
