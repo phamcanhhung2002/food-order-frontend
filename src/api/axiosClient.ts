@@ -16,7 +16,6 @@ const axiosClient = axios.create({
       });
     },
   },
-  // withCredentials: true,
 });
 
 axiosClient.interceptors.response.use(
