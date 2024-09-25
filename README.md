@@ -8,4 +8,4 @@
 
 ## General Information
 
-* The backend source is [here](https://github.com/phamcanhhung/food-order-backend.git).
+* The backend source is [here](https://github.com/phamcanhhung2002/food-order-backend).
