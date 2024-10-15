@@ -12,8 +12,6 @@ const HomeMenu = () => {
       try {
         const { data } = await appApi.allMenus();
         setDataMenu(data);
-        console.log(data)
-        
       } catch (error) {
         console.log(error)
       }

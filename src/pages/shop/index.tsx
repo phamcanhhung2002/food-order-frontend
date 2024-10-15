@@ -8,7 +8,7 @@ import { Food } from "../../types/listType";
 import { FilterType } from "../../types/filterType";
 import { appApi } from "../../api/appApi";
 
-const size = 9;
+const size = 8;
 
 const Shop = () => {
   const [filters, setFilters] = useState<FilterType>({});
@@ -26,37 +26,39 @@ const Shop = () => {
     try {
       const { cat } = filters;
 
-      const res = await appApi.filterFoods({
+      let res = await appApi.filterFoods({
         page: currentPage,
         size,
         ...filters,
-        cat: cat ? cat.join(",") : undefined,
+        cat: cat?.join(","),
         sort,
       });
 
-      const { data, metaData } = res.data;
-      const { total } = metaData;
+      let { data, metaData } = res.data;
+      let { numPages } = metaData;
 
-      const numPages = Math.ceil(total / size);
+      if (data.length === 0 && numPages > 0) {
+        setCurrentPage(1)
+      } else {
+        setFoods(data);
+        setNumPages(numPages);
+      }
+
       setFoods(data);
       setNumPages(numPages);
-      setCurrentPage(currentPage);
-      setLoading(false);
 
       if (error) setError(false);
     } catch (err) {
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     setFoods([])
-    getFoods();
-  }, [filters]);
-
-  useEffect(() => {
     getFoods(currentPage);
-  }, [currentPage, sort]);
+  }, [filters, currentPage, sort]);
 
   const handleFilters = (filterValue: FilterType) => {
     setFilters({
@@ -99,8 +101,8 @@ const Shop = () => {
       </section>
 
       <section className="flex gap-x-10">
-        <div className="basis-9/12 flex flex-col items-center max-lg:basis-full max-lg:w-full ">
-          {<div className="flex justify-center absolute w-full h-full">{loading && <Spin size="large" />}</div>}
+        <div className="basis-9/12 flex flex-col items-center max-lg:basis-full max-lg:w-full">
+          {loading && (<div className="flex justify-center absolute w-full h-full"><Spin size="large" /></div>)}
 
           <div className="grid sm:grid-cols-1 lg:grid-cols-2  2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 gap-10 w-full max-lg:gap-0 max-lg:gap-y-6">
             {error ? "Something went wrong" : foods.map((food, index) => <ItemFood key={index} food={food} />)}

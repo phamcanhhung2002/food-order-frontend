@@ -23,7 +23,7 @@ const ShopPagination = ({
                 currentPage === index + 1 &&
                 "bg-primary border-primary text-white"
               }`}
-            onClick={(_) => setCurrentPage(index + 1)}
+            onClick={() => setCurrentPage(index + 1)}
             key={index}
           >
             {index + 1}

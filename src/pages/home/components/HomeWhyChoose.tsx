@@ -62,7 +62,7 @@ const HomeWhyChoose = () => {
 
             <div className='gap-x-4 gap-y-4 grid grid-cols-2 max-lg:gap-x-2'> {
                 dataWhyChoose.map((item, index) => (
-                  <div onClick={() => setActive(index)} className='cursor-pointer'>
+                  <div onClick={() => setActive(index)} className='cursor-pointer' key={index}>
                     <ItemWhyChoose title={item.title} icon={item.icon} isActive={index === active}/>
                   </div>
                 ))

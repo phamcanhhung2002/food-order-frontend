@@ -1,1 +1,1 @@
-export const HOST_API = "http://localhost:3000/api/v1";
+export const HOST_API = import.meta.env.VITE_HOST_API;

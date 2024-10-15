@@ -148,7 +148,8 @@ const ShopSideBar = ({
         <p className="font-bold text-[#333] text-xl my-6">Best Sellers</p>
         <div className="flex flex-col gap-4">
           {
-            bestSellers.map((item: any) => <ItemLastestProduct 
+            bestSellers.map((item: any) => <ItemLastestProduct
+              key={item.id}
               image={item.featuredImageId}
               name = {item.name}
               point = {item.rating}

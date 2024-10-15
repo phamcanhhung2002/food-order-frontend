@@ -177,7 +177,7 @@ const Checkout = () => {
             </p>
             <p className="text-base flex justify-between">
               Discount
-              <span className="text-[#333]">{cart.voucher?.discount * cart.subTotal / 100 ?? 0}</span>
+              <span className="text-[#333]">{cart.voucher?.discount ? cart.voucher.discount * cart.subTotal / 100 : 0}</span>
             </p>
             <p className="text-base flex justify-between">
               Tax
@@ -188,7 +188,7 @@ const Checkout = () => {
               Total{" "}
               <span className="font-bold">
                 {Number(
-                  cart.subTotal * (1 - (cart.voucher?.discount/100 ?? 0)) +
+                  cart.subTotal * (1 - (cart.voucher?.discount ? cart.voucher.discount /100 : 0)) +
                     cart.subTotal * (cart.tax / 100) +
                     cart.deliveryFee
                 ).toFixed(2)}
